@@ -28,8 +28,9 @@ class MainController extends Controller {
         );
     }
     public function boardAction($params){
-
         $bid = array_shift($params);
+
+
         $board = Board::getBoard($bid);
         $uid = Users::getLoginedUser();
 
@@ -84,5 +85,39 @@ class MainController extends Controller {
             ]
         );
 
+    }
+
+    public function UpdateCardAction(){
+        if(isset($_GET["cid"]) && isset($_GET["status"])){
+            $cat=(int)$_GET["status"];
+            $cid=(int)$_GET["cid"];
+
+            Board::updateCardStatus($cid,$cat);
+            echo 1;
+        }
+        echo 0;
+    }
+
+
+    public function UpdateLabel(){
+        if(isset($_GET["cid"]) && isset($_GET["lid"])){
+            $lid=(int)$_GET["lid"];
+            $cid=(int)$_GET["cid"];
+
+            Board::updateCardLabel($cid,$lid);
+            echo 1;
+        }
+        echo 0;
+    }
+
+    public function UpdateMember(){
+        if(isset($_GET["cid"]) && isset($_GET["uid"])){
+            $uid=(int)$_GET["uid"];
+            $cid=(int)$_GET["cid"];
+
+            Board::updateCardMember($cid,$uid);
+            echo 1;
+        }
+        echo 0;
     }
 }

@@ -6,13 +6,13 @@
                         <div class="form-section">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h4 class="h6">List - <a href="board/<?=$board["bid"]?>">
+                                    <h4 class="h6">List - <a href="/main/board/<?=$board["bid"]?>">
                                         
-                                    <span><?=$category?></span>
+                                    <span><?=$card["fk_tbl_cat"]?></span>
                                     </a></h4>
                                 </div>
                                 <div class="col-md-3 pr-md-1 mb-md-0 mb-3">
-                                    <small><b>Assigned to : </b> <?=$row["name"]?> </small>
+                                    <small><b>Assigned to : </b> <?=$members[0]["name"]?> </small>
                                     <select class="custom-select form-control" id="inputGroupSelect01" onchange="update_member(<?=$card_id?>,this.value)">
                                         <option selected disabled>Members...</option>
                                         <?php foreach($members as $member): ?>
@@ -22,7 +22,7 @@
                                       </select>
                                 </div>
                                 <div class="col-md-3 pl-md-1  mb-md-0 mb-3">
-                                <small><b>Label</b> <?=$label?> </small>
+                                <small><b>Label</b> <?=$labels[0]["label_name"]?> </small>
                                     <select class="custom-select form-control" id="inputGroupSelect01" onchange="update_label(<?=$card["cid"]?>,this.value)">
                                         <option selected disabled>Label...</option>
                                           
@@ -52,7 +52,7 @@
 
                                 </div>
                                 <div class="col-lg-2 col-md-3 col-4 ml-auto text-right">
-                                    <a href="board.php?bid=<?=$board["bid"]?>" class="btn d-block btn-theme-2 text-danger px-2">Back</a>
+                                    <a href="/main/board/<?=$board["bid"]?>" class="btn d-block btn-theme-2 text-danger px-2">Back</a>
                                 </div>
                             </form>
                            

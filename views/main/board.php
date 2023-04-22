@@ -285,22 +285,7 @@
         }            
     }
 
-    function change_card(cid, status) {
-    $.ajax({
-        url: 'ajax/updateCard.php',
-        type: "POST",
-        data: {
-            cid: cid,
-            status: status
-        },
-        success: function (res) {
-            console.log("Change card");
-        }
-    }).done(function(msg) {
-                   console.log(msg);
-                });
-
-}
+  
 
     function filter_show(id) {
         document.getElementById(id).classList.toggle("active");

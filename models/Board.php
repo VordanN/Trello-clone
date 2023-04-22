@@ -36,7 +36,6 @@ class Board
 
 
     public static function getBoardMembers($bid,$uid){
-        //SELECT * from tbl_u,tbl_board where tbl_board.fk_tbl_u != tbl_u.uid and tbl_board.bid=" .$board_id
         $users = Core::getInstance()->context->table("tbl_u")->select()->execute();
         
         $board = self::getBoard($bid);
@@ -111,6 +110,30 @@ class Board
     public static function getBoardCategories(){
         return Core::getInstance()->context->table("tbl_card_cat")->select()->execute();
         
+    }
+
+    public static function updateCardStatus($cid,$status){
+        $result = Core::getInstance()->context->table("tbl_card")->update([
+            "fk_tbl_cat" => $status
+        ])->where([
+            "cid" => $cid
+        ])->execute();
+    }
+
+    public static function updateCardLabel($cid,$lid){
+        $result = Core::getInstance()->context->table("tbl_card")->update([
+            "fk_tbl_label" => $lid
+        ])->where([
+            "cid" => $cid
+        ])->execute();
+    }
+
+    public static function updateCardMember($cid,$uid){
+        $result = Core::getInstance()->context->table("tbl_card")->update([
+            "fk_tbl_u" => $uid
+        ])->where([
+            "cid" => $cid
+        ])->execute();
     }
 
     public static function getCardById($cid){
